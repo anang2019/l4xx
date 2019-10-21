@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://globekit.co/ -->
+<html class="wf-roboto-n5-active wf-roboto-n1-active wf-roboto-n3-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>小熊远程云秘书</title>
+
+        <link href="__INDEXIMAGE__/favicon.ico" rel="icon" type="image/x-icon">
+       <meta property="og:type" content="website">
+        <meta property="og:url" content="http://l4xx.com/">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:description" content="远程控制手机">
+
+
+        <!-- ###BeginUncompressedCSS### -->
+        <link href="__INDEXCSS__/desktop.css" rel="stylesheet">
+        <link href="__INDEXCSS__/mobile.css" rel="stylesheet">
+        <!-- ###EndUncompressedCSS### -->
+
+        <!-- ###BeginCompressedCSS### -->
+        <!--<link href="/static/minified/globekit-styles.min.css" rel="stylesheet">-->
+        <!-- ###EndCompressedCSS### -->
+
+        <!-- ###BeginUncompressedJS### -->
+        <script src="__INDEXJS__/Site.js"></script>
+        <script src="__INDEXJS__/FormManager.js"></script>
+        <script src="__INDEXJS__/DataManager.js"></script>
+        <script src="__INDEXJS__/ModelManager.js"></script>
+        <script src="__INDEXJS__/ScrollManager.js"></script>
+        <script src="__INDEXJS__/CanvasManager.js"></script>
+
+        <script src="__INDEXJS__/gl-matrix.js"></script>
+        <script src="__INDEXJS__/Camera.js"></script>
+        <script src="__INDEXJS__/Program.js"></script>
+        <script src="__INDEXJS__/ProgramManager.js"></script>
+        <script src="__INDEXJS__/TextureManager.js"></script>
+        <script src="__INDEXJS__/PointGlobeDrawable.js"></script>
+        <script src="__INDEXJS__/NebulaDrawable.js"></script>
+        <script src="__INDEXJS__/BokehDrawable.js"></script>
+        <script src="__INDEXJS__/BackgroundDrawable.js"></script>
+        <script src="__INDEXJS__/RingDrawable.js"></script>
+        <script src="__INDEXJS__/EarthquakeDrawable.js"></script>
+        <script src="__INDEXJS__/BigQuakeDrawable.js"></script>
+        <script src="__INDEXJS__/Model.js"></script>
+        <script src="__INDEXJS__/LatLng.js"></script>
+        <script src="__INDEXJS__/ProjectionUtil.js"></script>
+
+        <script src="__INDEXJS__/Animation.js"></script>
+        <script src="__INDEXJS__/Ease.js"></script>
+        <script src="__INDEXJS__/Ajax.js"></script>
+        <script src="__INDEXJS__/Signal.js"></script>
+        <script src="__INDEXJS__/SplitText.js"></script>
+        <script src="__INDEXJS__/TweenMax.js"></script>
+
+    <script src="__INDEXJS__/public.js"></script>
+
+        <link rel="stylesheet" href="__INDEXCSS__/css.css" media="all">
+
+        <style>
+            .yzm{
+                width: 30%;height: 50px;
+                position: absolute;right: 40%;top: -24px;
+            }
+            #getcode{
+                cursor:pointer;
+                padding: 10px 15px;border-radius: 5px;
+                background-color: #9800deab;
+                border: 1px  #555 solid; color: #FFFFFF;
+                width: 24%;
+                height: 31px;
+                position: absolute;
+                right: 40%;
+                top: -26px;
+                text-align:center;
+                line-height:31px;
+            }
+            #getcode.active {
+                margin: 5px;
+            }
+
+
+        </style>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?82e529051ff2615077ceafdaba1a3038";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+
+    <body class="desktop fonts-active">
+        <div id="quake-info" ><div>
+            <span class=""></span></div></div>
+
+        <div class="header">
+            <div class="logo-mark">
+                <a href="http://h5zn.com" target="_blank">
+                    <img src="__INDEXIMAGE__/xx_tx.png" width="51" height="51" viewBox="0 0 51 51">
+                </a>
+
+            </div>
+
+            <div class="logo-text" style=" color: white;">
+
+               小熊远程云秘书
+            </div>
+
+            <div class="social">
+                <ul>
+                    <li class="twitter icon">
+
+                        <svg  t="1569377536863" class="icon"  viewBox="0 0 1024 1024" version="1.1"
+                              xmlns="http://www.w3.org/2000/svg" p-id="1168"
+                              style="cursor:pointer" onclick=" Site.scrollManager.didSelectSection(Site.scrollManager.sections[5])"
+                              width="20" height="20">
+                            <path d="M512 1024C229.248 1024 0 794.752 0 512S229.248 0 512 0s512 229.248 512 512-229.248 512-512 512z m0-938.666667C276.352 85.333333 85.333333 276.352 85.333333 512s191.018667 426.666667 426.666667 426.666667 426.666667-191.018667 426.666667-426.666667S747.648 85.333333 512 85.333333z m0 768a340.650667 340.650667 0 0 1-266.24-128A340.650667 340.650667 0 0 1 512 597.333333a340.48 340.48 0 0 1 266.197333 128A340.48 340.48 0 0 1 512 853.333333z m0-298.666666a170.666667 170.666667 0 1 1 0-341.333334 170.666667 170.666667 0 0 1 0 341.333334z" p-id="1169" fill="#ffffff"></path></svg>
+
+
+                    </li>
+                    <li class="twitter icon">
+                        <a href="http://bearctrl.com" target="_blank">
+                            <img width="20" height="20" viewBox="0 0 16 16" src="__INDEXIMAGE__/tmp/yun.png">
+                        </a>
+                    </li>
+                    <li class="instagram icon">
+                        <a href="http://bearyx.com/" target="_blank">
+                            <img width="20" height="20" viewBox="0 0 16 16" src="__INDEXIMAGE__/tmp/yx.png">
+                        </a>
+                    </li>
+                    <li class="facebook icon">
+
+                            <img width="20" height="20" viewBox="0 0 16 16"
+                                 style="cursor:pointer"
+                                 onclick=" Site.scrollManager.didSelectSection(Site.scrollManager.sections[5])"
+                                 src="__INDEXIMAGE__/tmp/help.png">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <canvas id="globekit-canvas" width="1904" height="845"></canvas>
+
+        <div id="scrolling-content">
+            <div id="scrolling-area">
+                <div class="copy-section topic-globekit" style="opacity: 1;">
+                    <div class="copy-content">
+                        <h1 class="animated-text in" style="">  <div style="position: relative; display: inline-block;
+                        opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">A</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">n</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">d</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform:
+                             matrix(1, 0, 0, 1, 0, 0);">r</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">o</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">i</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">d</div>
+                            <span class="emdash"><span></span>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">手</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">机</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">远</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">程</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">协</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">助</div>
+                            </span></h1>
+                        <p class="animated-body">控制/观看手机界面、操作简单、远程操作原生划屏手势操作、交互难度更低、手机无需root安卓系统版本超过7.0即可</p>
+                    </div>
+                </div>
+
+                <div class="copy-section topic-performance" style="opacity: 0.0625;">
+                    <div class="copy-content">
+                        <h1 class="animated-text in" style=""> <div style="position: relative; display: inline-block; opacity: 1;
+                        transform: matrix(1, 0, 0, 1, 0, 0);">远</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">程</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">协</div>
+                            <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">助</div>
+                            <span class="emdash"><span></span>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">关</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">爱</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">身</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">边</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">的</div>
+                                <div style="position: relative; display: inline-block; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">人</div></span></h1>
+                        <p class="animated-body">随着智能手机的普及，父母那辈也普遍使用智能手机，但是由于手机功能越来越复杂，除了打电话外其他功能基本不太会用，有时请教子女一个使用问题却由于不在身边无法解决。如在他们手机上安装了小熊远程云秘书后，就可以直接远控他们手机界面操作就像在现场指导一样，还可以随时帮他们清理垃圾信息了。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="copy-section topic-customizable" style="opacity: 0.0625;">
+                    <div class="copy-content">
+                        <h1 class="animated-text" style="visibility: hidden;"> <div style="position:relative;display:inline-block;">远</div>
+                            <div style="position:relative;display:inline-block;">程</div>
+                            <div style="position:relative;display:inline-block;">摄</div>
+                            <div style="position:relative;display:inline-block;">像</div>
+                            <div style="position:relative;display:inline-block;">头</div>
+                            <span class="emdash"><span></span>
+                                <div style="position:relative;display:inline-block;">随</div>
+                                <div style="position:relative;display:inline-block;">时</div>
+                                <div style="position:relative;display:inline-block;">随</div>
+                                <div style="position:relative;display:inline-block;">地</div>
+                                <div style="position:relative;display:inline-block;">查</div>
+                                <div style="position:relative;display:inline-block;">看</div>
+                                <div style="position:relative;display:inline-block;">关</div>
+                                <div style="position:relative;display:inline-block;">心</div>
+                                <div style="position:relative;display:inline-block;">的</div>
+                                <div style="position:relative;display:inline-block;">地</div>
+                                <div style="position:relative;display:inline-block;">方</div></span></h1>
+                        <p class="animated-body">可以利用闲置的安卓手机，关心在家的父母、孩子和宠物，摆好位置随时查看</p>
+                    </div>
+                </div>
+
+                <div class="copy-section topic-platform" style="opacity: 5.0625;">
+                    <div class="copy-content">
+                        <h1 class="animated-text" style="visibility: hidden;"> <div style="position:relative;display:inline-block;">操</div>
+                            <div style="position:relative;display:inline-block;">作</div>
+                            <div style="position:relative;display:inline-block;">简</div>
+                            <div style="position:relative;display:inline-block;">单</div>
+                            <span class="emdash"><span></span>
+                                <div style="position:relative;display:inline-block;">让</div>
+                                <div style="position:relative;display:inline-block;">所</div>
+                                <div style="position:relative;display:inline-block;">有</div>
+                                <div style="position:relative;display:inline-block;">人</div>
+                                <div style="position:relative;display:inline-block;">都</div>
+                                <div style="position:relative;display:inline-block;">能</div>
+                                <div style="position:relative;display:inline-block;">用</div></span></h1>
+                        <p class="animated-body">仅需两步即可使用:下载安装本应用，授权开启。协助者登录官网即可连接。无需安装各种客户端，注册各种账号。</p>
+                    </div>
+                </div>
+
+                <div class="copy-section topic-quote" style="opacity: 39.0625;">
+                    <div class="copy-content">
+                        <h1 class="animated-text" style="visibility: hidden;"><div style="position:relative;display:inline-block;">无</div>
+                            <div style="position:relative;display:inline-block;">需</div>
+                            <div style="position:relative;display:inline-block;">r</div>
+                            <div style="position:relative;display:inline-block;">o</div>
+                            <div style="position:relative;display:inline-block;">o</div>
+                            <div style="position:relative;display:inline-block;">t</div>
+                            <span class="emdash"> <span></span>
+                                <div style="position:relative;display:inline-block;">无</div>
+                                <div style="position:relative;display:inline-block;">需</div>
+                                <div style="position:relative;display:inline-block;">更</div>
+                                <div style="position:relative;display:inline-block;">改</div>
+                                <div style="position:relative;display:inline-block;">手</div>
+                                <div style="position:relative;display:inline-block;">机</div>
+                                <div style="position:relative;display:inline-block;">任</div>
+                                <div style="position:relative;display:inline-block;">何</div>
+                                <div style="position:relative;display:inline-block;">设</div>
+                                <div style="position:relative;display:inline-block;">置</div>
+
+                            </span></h1>
+                        <p class="animated-body">手机无需root，安卓系统版本超过2016年8月推出的android 7.0即可</p>
+                    </div>
+                </div>
+
+                <div class="copy-section topic-form" style="opacity: 150.063;">
+                    <div class="copy-content">
+                        <div id="form-section">
+                            <form id="request-form" action="" method="POST" target="no-target">
+                                <div class="input-block" id="block-one">
+                                    <label for="NAME">输入您的手机号</label>
+                                    <input id="NAME" type="text" value="" required="" name="NAME" >
+                                </div>
+                                <div class="input-block" id="block-two">
+                                    <label for="COMPANY" id="rePass">您的密码</label>
+                                    <input id="COMPANY" type="password" value="" required="" name="COMPANY1" autocomplete="no">
+                                </div>
+                                <div class="input-block" id="block-three">
+                                    <label for="EMAIL">验证码</label>
+                                    <input id="EMAIL" type="text" value=""   autocomplete="off">
+
+                                    <img src="{:captcha_src()}" id="captcha" alt="captcha" class="yzm"
+                                         onclick="this.src='{:captcha_src()}?seed='+Math.random()" >
+
+                                    <div id="getcode" >获取短信验证码</div>
+
+                                </div>
+                                <div class="textarea-block" id="block-four" style="display: none">
+                                    <label for="NEEDS"></label>
+                                    <textarea id="NEEDS" name="NEEDS"></textarea>
+                                </div>
+                                <!--<input id="request" type="submit" value="Request a Quote" name="SUBMIT">-->
+                            </form>
+                            <span id="error-message">输入错误!</span>
+                            <div style="width: 60%;overflow: hidden;margin-top: 10px";>
+                                <u class="c1" id="regbt" onclick="regclick()">没有账号?</u>
+                                <u class="c2" id="forget" onclick="forgetclick()">重置密码？</u>
+
+                            </div>
+
+                            <iframe src="__INDEXJS__/saved_resource.html" id="no-target" name="no-target"
+                                    style="visibility:hidden; display:none"></iframe>
+                        </div>
+                        <h2 id="success-message" style="visibility: hidden;"><div style="position:relative;
+                        display:inline-block;">T</div>
+                            <div style="position:relative;display:inline-block;">h</div>
+                            <div style="position:relative;display:inline-block;">a</div>
+                            <div style="position:relative;display:inline-block;">n</div>
+                            <div style="position:relative;display:inline-block;">k</div>
+                            <span class="emdash"><span></span>
+                                <div style="position:relative;display:inline-block;">Y</div>
+                                <div style="position:relative;display:inline-block;">o</div>
+                                <div style="position:relative;display:inline-block;">u</div></span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pagination">
+            <div id="pagination-text">
+                <div id="page-count-tens">
+
+                </div>
+
+                <div id="page-count-ones">
+                    <div class="page-numbers" style="transform: translate3d(0px, 0vw, 0px);">
+                        <div class="page-number">简单</div>
+                        <div class="page-number">方便</div>
+                        <div class="page-number">易用</div>
+                        <div class="page-number">隐私</div>
+                        <div class="page-number">原生</div>
+                        <div class="page-number">登录</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="viz-caption">个人用户免费
+                <a href="http://h5zn.com" target="_blank">商务咨询
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17.06" height="9.281" viewBox="0 0 17 9">
+                        <path d="M1672.08,744.45l-4.07,4.52-0.89-.861L1670,745h-15v-1.021h14.96l-3.27-3.468,0.94-.83Z" transform="translate(-1655 -739.688)"></path>
+                    </svg>
+                </a>
+            </p>
+
+            <ul id="pagination-dots">
+                </ul>
+        </div>
+
+        <div id="mouse-indicator">
+            <div id="mouse-wheel" class="visible hidden">
+                <div class="mouse-outline">
+                    <svg width="18px" height="30px">
+                        <path fill="#fff" d="M729,903.789v9.419a9.009,9.009,0,1,0,18,0v-9.419A9.009,9.009,0,1,0,729,903.789Zm9-7.327a7.19,7.19,0,0,1,7,7.327v9.419a7.007,7.007,0,1,1-14,0v-9.419A7.19,7.19,0,0,1,738,896.462Z" transform="translate(-729 -894.375)"></path>
+                    </svg>
+                </div>
+                <div class="wheel animate">
+                    <svg width="2px" height="6px">
+                        <path fill="#fff" d="M738,905.358a1.027,1.027,0,0,0,1-1.046v-3.14a1,1,0,1,0-2,0v3.14A1.027,1.027,0,0,0,738,905.358Z" transform="translate(-737 -900.125)"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div id="request" ><span id="req_uest">马上体验</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15">
+                <path d="M450.622,782.89l-1.648-6.087,13.846,7.249Zm-2.309,3.644-2.094-2.128,2.094-1.879,0.937,1.942Zm14.318-1.316-13.609,6.789,1.619-5.7Z" transform="translate(-446.219 -776.812)"></path>
+            </svg>
+        </div>
+
+        <script>
+            Site.init();
+
+            WebFontConfig = {
+                google: {
+                    families: ["Roboto:100,300,500:latin"]
+                },
+                /* Called when all the specified web-font provider modules (google, typekit, and/or custom) have reported that they have started loading fonts. */
+                loading: function() {
+                    // do something
+                },
+                /* Called when each requested web font has started loading. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+                fontloading: function(fontFamily, fontDescription) {
+                    // do something
+                },
+                /* Called when each requested web font has finished loading. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+                fontactive: function(fontFamily, fontDescription) {
+                    // do something
+                },
+                /* Called if a requested web font failed to load. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+                fontinactive: function(fontFamily, fontDescription) {
+                    // do something
+                },
+                /* Called when all of the web fonts have either finished loading or failed to load, as long as at least one loaded successfully. */
+                active: function() {
+                    setTimeout(function(){
+                        Site.fontsDidActivate();
+                    }, 250);
+                },
+                /* Called if the browser does not support web fonts or if none of the fonts could be loaded. */
+                inactive: function() {
+                    setTimeout(function(){
+                        Site.fontsDidActivate();
+                    }, 250);
+                }
+            };
+        </script>
+
+        <!-- Self hosting this part, for Ghostery's sake -->
+        <script src="__INDEXJS__/WebFontLoader.js"></script>
+
+        <script src="__INDEXJS__/jquery.min.js"></script>
+        <script>
+            var reSendTime=0;
+            $(document).ready(function(){
+                var stars=2000;  /*星星的密集程度，数字越大越多*/
+                var $stars=$(".stars");
+                var r=800;   /*星星的看起来的距离,值越大越远,可自行调制到自己满意的样子*/
+                for(var i=0;i<stars;i++){
+                    var $star=$("<div/>").addClass("star");
+                    $stars.append($star);
+                }
+                $(".star").each(function(){
+                    var cur=$(this);
+                    var s=0.2+(Math.random()*1);
+                    var curR=r+(Math.random()*300);
+                    cur.css({
+                        transformOrigin:"0 0 "+curR+"px",
+                        transform:" translate3d(0,0,-"+curR+"px) rotateY("+(Math.random()*360)+"deg) rotateX("+(Math.random()*-50)+"deg) scale("+s+","+s+")"
+
+                    })
+                })
+            })
+            $("#getcode").hide();
+
+            function set_Thread(){
+                var thread=setInterval(function () {
+                    $("#getcode").text(reSendTime+" 秒后重试");
+                    reSendTime--;
+                    if(reSendTime<=0){
+                        clearInterval(thread);
+                        $("#getcode").text("获取短信验证码");
+                    }
+                }, 1000);
+            }
+
+            $("#getcode").click(function(){
+                if(reSendTime>0)return;
+                var mobile=$("input[name='NAME']").val();
+                if(!isMobile(mobile)){
+                    $("#error-message").text("请输入正确的手机号!");
+                    $("#error-message").css("opacity",1);
+                    return;
+                }else{
+                    $("#error-message").css("opacity",0);
+                    $("#error-message").text("输入错误!");
+                }
+                console.log(mobile);
+                $.post("{:url('index/login/sendmsm')}",{'phone':mobile},function(data){
+                    console.log(data);
+                    if(data.data=="1"){
+                        reSendTime=60;
+                        set_Thread();
+                    }else if(data.data=="2"){
+                        reSendTime=Number(data.type);
+                        set_Thread();
+                    }
+                });
+                //alert();
+            })
+
+
+            function regclick(){
+                if($("#regbt").text()=="没有账号?"){
+                    $("#regbt").text("返回登录");
+                    $("#captcha").hide();
+                    $("#getcode").show();
+                    $("#req_uest").text("注册")
+                }else{
+                    $("#regbt").text("没有账号?");
+                    $("#captcha").show();
+                    $("#getcode").hide();
+                    $("#req_uest").text("登录")
+                }
+
+            }
+            function forgetclick() {
+                if($("#forget").text()=="重置密码？"){
+                    $("#forget").text("返回登录");
+                    $("#captcha").hide();
+                    $("#getcode").show();
+                    $("#req_uest").text("重置密码");
+                    $("#rePass").text("输入新密码");
+
+                }else{
+                    $("#forget").text("重置密码？");
+                    $("#captcha").show();
+                    $("#getcode").hide();
+                    $("#req_uest").text("登录");
+                    $("#rePass").text("您的密码");
+                }
+            }
+
+        </script>
+</body></html>

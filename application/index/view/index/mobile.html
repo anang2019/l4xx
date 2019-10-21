@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://globekit.co/ -->
+<html class="wf-roboto-n5-active wf-roboto-n1-active wf-roboto-n3-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>小熊远程云秘书</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="__INDEXIMAGE__/favicon.ico" rel="icon" type="image/x-icon">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://l4xx.com/">
+
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:description" content="远程控制手机">
+
+        <!-- ###BeginUncompressedCSS### -->
+        <link href="__INDEXCSS__/desktop.css" rel="stylesheet">
+        <link href="__INDEXCSS__/mobile.css" rel="stylesheet">
+    <link rel="stylesheet" href="__INDEXJS__/layui/css/layui.css">
+    <style>
+        html, body {
+            margin: 0;
+        }
+
+        #particle-canvas {
+            width: 100%;
+            height: 40vh;
+            background: linear-gradient(to bottom, rgb(10, 10, 50) 0%,rgb(60, 10, 60) 100%);
+            vertical-align: middle;
+        }
+        .black2{
+            width: 100%;
+            height:100%;
+            position: fixed;
+            top:0;
+            background: none;
+            display: none;
+            z-index: 999;
+        }
+        .login-box1{
+        	    width: 100px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: 17px;
+
+        	
+        }
+        .login-box1 li{
+        	margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    line-height: 44px;
+        cursor: pointer;
+        transition: 0.4s;
+        	
+        }
+        .login-box1 li:hover{
+        	color: #fff !important;
+        	opacity: 1 !important;
+        }
+        .login1{
+    height: 24px;
+    overflow: hidden;
+    transition: 0.4s;
+        }
+        .login1:hover{
+        	height: 200px
+        	;
+        }
+        #password-old{
+        	width: 77%;
+    border: 1px solid #d8d8d8;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 4px;
+    padding-left: 3%;
+        }
+        #password-new{
+        	width: 77%;
+    border: 1px solid #d8d8d8;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-left: 3%;
+    border-radius: 4px;
+        }
+        .password-btn{
+        	width: 30%;
+    height: 36px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+    line-height: 36px;
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 4px;
+        cursor: pointer;
+        }
+        .layui-layer-title{
+        	background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+        }
+    </style>
+
+
+
+        <!-- ###EndCompressedJS### --><link rel="stylesheet" href="__INDEXCSS__/css.css" media="all">
+    <link rel="stylesheet" href="__INDEXCSS__/public.css">
+    <link rel="stylesheet" href="__INDEXCSS__/codepen.css">
+    <script src="__INDEXJS__/socketjs.js"></script>
+    <script src="__INDEXJS__/public.js"></script>
+
+    <script src="__INDEXJS__/layui/layui.all.js"></script>
+</head>
+
+    <body class="desktop fonts-active" style="background-color: #3b0a3c">
+    <div class="black2"></div>
+        <div id="quake-info" ><div>
+            <span class=""></span></div></div>
+
+
+        <div class="header">
+            <div class="logo-mark">
+                <a href="../" target="_blank">
+                    <img src="__INDEXIMAGE__/xx_tx.png" width="51" height="51" viewBox="0 0 51 51">
+                </a>
+
+            </div>
+
+            <div class="logo-text" style=" color: white;">
+
+               小熊远程云秘书
+            </div>
+
+            <div class="social">
+                <ul>
+
+                    <li class="twitter icon">
+                    	<div class="login1">
+                    		                        <a href="user.html" target="_blank">
+                        <svg  style="position: relative;top: 5px;" t="1569377536863" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1168" width="20" height="20">
+                            <path d="M512 1024C229.248 1024 0 794.752 0 512S229.248 0 512 0s512 229.248 512 512-229.248 512-512 512z m0-938.666667C276.352 85.333333 85.333333 276.352 85.333333 512s191.018667 426.666667 426.666667 426.666667 426.666667-191.018667 426.666667-426.666667S747.648 85.333333 512 85.333333z m0 768a340.650667 340.650667 0 0 1-266.24-128A340.650667 340.650667 0 0 1 512 597.333333a340.48 340.48 0 0 1 266.197333 128A340.48 340.48 0 0 1 512 853.333333z m0-298.666666a170.666667 170.666667 0 1 1 0-341.333334 170.666667 170.666667 0 0 1 0 341.333334z" p-id="1169" fill="#ffffff"></path></svg>
+                            <font id="user_tel" color="#FFFFFF">{$user.tel}</font>
+                        </a>
+
+					<ul class="login-box1">
+						<li onclick="editpass()">修改密码</li>
+						<li onclick="outlogin()">退出登录</li>
+					</ul>
+                    	</div>
+
+
+                    </li>
+
+                    <li class="twitter icon">
+                        <a href="http://bearctrl.com" target="_blank">
+                            <img width="20" height="20" viewBox="0 0 16 16"
+                                 src="__INDEXIMAGE__/tmp/yun.png">
+                        </a>
+                    </li>
+                    <li class="instagram icon">
+                        <a href="http://bearyx.com/" target="_blank">
+                            <img width="20" height="20" viewBox="0 0 16 16" src="__INDEXIMAGE__/tmp/yx.png">
+                        </a>
+                    </li>
+                    <li class="facebook icon">
+                        <a href="help.html" target="_blank">
+                            <img width="20" height="20" viewBox="0 0 16 16" src="__INDEXIMAGE__/tmp/help.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <canvas id="particle-canvas"></canvas>
+
+
+        <div id="scrolling-content">
+
+            <div id="scrolling-area">
+
+                <div class="copy-section topic-globekit" style="opacity: 1;">
+
+
+                        <div class=" box phone-box" style="width: 1300px">
+                            <div>
+                                <div>
+                                    <div class="code">
+                                        <img src="__INDEXIMAGE__/qrcode.png" class="code-new">
+                                        <div style="text-align:center"><button class="buttondw" >下载安装</button></div>
+                                        <img style="text-align:center" class="next-img" src="__INDEXIMAGE__/next.png">
+                                        <div style="text-align:center"><h3 class="black-next">开启无障碍</h3></div>
+                                        <img class="next-img" src="__INDEXIMAGE__/next.png">
+                                        <div><h3 class="black-next">取得连接码</h3></div>
+                                        <img class="next-img" src="__INDEXIMAGE__/next.png">
+                                        <div><h3 class="black-next">连接手机</h3></div>
+                                    </div>
+                                </div>
+                            <div class="phone" >
+                                <img id="d"  src="__INDEXIMAGE__/moren.png"  draggable="false" onMouseDown="onMouseDownCheck()"
+                                     onMouseOut="onMouseOutCheck()"
+                                     onMouseUp="onMouseUpCheck()" onMouseMove="onMouseMove()" >
+                                <div class="q1" onclick="backCheck()"></div>
+                                <div class="q2" onclick="homeCheck()"></div>
+                                <div class="q3" onclick="menuCheck()"></div>
+                            </div>
+                            <!-- 登入 -->
+                            <div >
+                                <div class="left-in">
+                                    <div class="header-in">
+                                        <a href="help.html" target="_blank">
+                                            <button style="cursor:pointer;
+                                         padding: 10px 15px;border-radius: 5px;
+                                         background:none;
+                                         border: 1px  #555 solid; color: #FFFFFF;
+                                        ">使用帮助</button>
+                                        </a>
+                                    </div>
+                                    <div class="form-in">
+                                        <input type="text" id="connect_tel" class="form-field-in animation-in " placeholder="输入手机号" autocomplete="on">
+                                        <input type="text" id="connect_num" class="form-field-in animation-in " placeholder="输入连接码" autocomplete="on">
+
+                                        <button id="connectbutton" class="animation-in " onclick="connectClick()">连接</button>
+
+                                    </div>
+                                    <!-- 手机信息 -->
+                                    <ul class="phone-list-in">
+                                        <li><h3>品牌:<font   id="mb_pp"></font><font class="pop">点亮屏幕</font></h3></li>
+                                        <li class="phone-list-row-in">型号:<font  id="mb_xh"></font></li>
+                                        <li class="phone-list-row-in">系统版本:<font id="mb_bb"></font></li>
+                                        <li class="phone-list-row-in">连接时间: <font class="re-in" id="mb_js">0</font> 秒</li>
+                                        <li class="phone-list-row-in">本次流量:<font class="green-in" id="mb_ll">0</font>MB</li>
+                                        <li class="phone-list-row-in">当日流量:<font class="green-in" id="mb_lla">0</font>MB</li>
+                                        <li id="mb_xtd" class="red-in" style="color: red;display: none;">系统版本低于7.0无法操作只能传屏</li>
+                                        <li id="mb_now" class="red-in" style="color: red;display: none;">无障碍服务未开启无法远程操作，请开启。</li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="pagination">
+
+
+            <p class="viz-caption">个人用户免费
+                <a href="http://h5zn.com" target="_blank">商务咨询
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17.06" height="9.281" viewBox="0 0 17 9">
+                        <path d="M1672.08,744.45l-4.07,4.52-0.89-.861L1670,745h-15v-1.021h14.96l-3.27-3.468,0.94-.83Z" transform="translate(-1655 -739.688)"></path>
+                    </svg>
+                </a>
+            </p>
+
+        </div>
+
+        <script src="__INDEXJS__/table.js"></script>
+        <script src="__INDEXJS__/jquery-1.8.3.min.js"></script>
+        <script>
+
+            $('.black2').click(function(){
+                $('.black2').hide();
+                var A=$('.phone-right input').val();
+
+                if(A.length==0){
+                    $('.phone-right input').not(this).prev().animate({'top':'0px','opacity':'1','font-size':'20px','letter-spacing':'1px'})
+
+                }
+            })
+
+            $('.phone-right input').click(function(){
+                $('.black2').show();
+                $(this).prev().animate({'top':'-25px','opacity':'0.4','font-size':'12px','letter-spacing':'1px'})
+                $('.phone-right input').not(this).prev().animate({'top':'0px','opacity':'1','font-size':'20px','letter-spacing':'1px'})
+            });
+            /* 连接事件 */
+            function connectClick(){
+                if($('#connectbutton').text()=="断开"){
+                    oAlert('正在断开');
+                    closeSocket();
+                }else{
+                    oAlert('正在连接');
+                    connect_click();
+                }
+
+            }
+            $('.pop').hide();
+            $('.pop').click(function(){
+                send("3,4;");
+            });
+            $('.password-btn').click(function(){
+
+
+            });
+            function editlogin(){
+
+                var tel=$("#user_tel").text();
+                var old=document.getElementById("password-old").value;
+                var new_pass=document.getElementById("password-new").value;
+                console.log(tel+"  "+old+"  "+new_pass);
+                $.post("{:url('index/login/editpass')}",{'phone':tel,'old':old,'new':new_pass},function(data){
+                    var tt={icon: data.type=="success"?1:8,time: 2000};
+                    layer.msg(data.msg,tt,function(){
+                        if(data.type=="success")
+                            layer.close(outputID)
+                    });
+                });
+            }
+            function outlogin(){
+            	$.ajax({
+                    url: '/index/login/logout',
+                    type: 'post',
+                    success: function (info) {
+                        //layer.msg(info.msg);
+                        window.location.href='/index/index/index';
+                    }
+                });
+            }
+            var outputID;
+            function editpass(){
+                outputID=layer.open({
+				  type: 1,
+				  title:['修改密码','color:#fff;background-color: linear-gradient(to bottom, rgb(10, 10, 50) 0%,rgb(60, 10, 60) 100%)'],
+				  skin: 'layui-layer-rim', //加上边框
+				  area: ['420px', '240px'], //宽高
+				  content: '<input type="text" name="" id="password-old" value="原密码" /><input type="text" name="" id="password-new" value="新密码" /><div class="password-btn" onclick="editlogin()">提交</div>'
+				});
+            }
+
+        </script>
+    </body></html>

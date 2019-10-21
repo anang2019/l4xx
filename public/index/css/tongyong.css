@@ -1,0 +1,11 @@
+html{
+	background-color: #f0f0f0;
+}
+.mui-content {
+	background-color: #f0f0f0;
+	-webkit-overflow-scrolling: touch;
+}
+.mui-bar-nav.mui-bar .mui-icon {
+	color: #333;
+}
+

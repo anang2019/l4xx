@@ -1,0 +1,239 @@
+
+body {
+	font-family: 'Rubik', sans-serif;
+}
+
+.container-in {
+	display: flex;
+	height: 100vh;
+}
+
+.left-in {
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	-webkit-animation-name: left;
+	animation-name: left;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+}
+
+.header-in > h2 {
+	margin: 0;
+	color: #4f46a5;
+}
+
+.header-in > h4 {
+	margin-top: 10px;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.form-in {
+	max-width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-in > p {
+	text-align: right;
+}
+
+.form-in > p > a {
+	color: #000;
+	font-size: 14px;
+}
+
+.form-field-in {
+	height: 46px;
+	padding: 0 16px;
+	border: 2px solid #ddd;
+	border-radius: 4px;
+	font-family: 'Rubik', sans-serif;
+	outline: 0;
+	transition: .2s;
+	margin-top: 20px;
+	background-color: #3b0a3c;
+	color: #FFFFFF;
+	border-color: #320232;
+}
+
+.form-field-in:focus {
+	border-color: #0f7ef1;
+	background-color: #3b0a3c;
+}
+
+.form-in > button {
+	padding: 12px 10px;
+	border: 0;
+	background: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-left: 50%;
+	color: #fff;
+	letter-spacing: 1px;
+	font-family: 'Rubik', sans-serif;
+	position: relative;
+}
+.form-in > button:active{
+	top: 2px; /**向下偏移2px **/
+	background: linear-gradient(to right, #0097ff 0%, #de48b5 100%);
+}
+
+.animation-in {
+	-webkit-animation-name: move;
+	animation-name: move;
+	-webkit-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
+}
+
+.a1-in {
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
+}
+
+.a2-in {
+	-webkit-animation-delay: 2.1s;
+	animation-delay: 2.1s;
+}
+
+.a3-in {
+	-webkit-animation-delay: 2.2s;
+	animation-delay: 2.2s;
+}
+
+.a4-in {
+	-webkit-animation-delay: 2.3s;
+	animation-delay: 2.3s;
+}
+
+.a5-in {
+	-webkit-animation-delay: 2.4s;
+	animation-delay: 2.4s;
+}
+
+.a6-in {
+	-webkit-animation-delay: 2.5s;
+	animation-delay: 2.5s;
+}
+
+@-webkit-keyframes move {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transform: translateY(-40px);
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+
+@keyframes move {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transform: translateY(-40px);
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+}
+@-webkit-keyframes left {
+	0% {
+		opacity: 0;
+		width: 0;
+	}
+	100% {
+		opacity: 1;
+		padding: 20px 40px;
+		width: 340px;
+	}
+}
+@keyframes left {
+	0% {
+		opacity: 0;
+		width: 0;
+	}
+	100% {
+		opacity: 1;
+		padding: 20px 40px;
+		width: 340px;
+	}
+}
+.phone-list-in{
+	margin-top: 10px;
+	color: #ffffff;
+}
+.phone-list-row-in{
+	margin-top: 10px;
+}
+.red-in{
+	color: #da1717;
+}
+.green-in{
+	color: #14e014;
+}
+
+.c-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	just-content: flex-start;
+	width: 450px;
+	margin: 3rem auto;
+}
+.o-btn {
+	position: relative;
+	display: block;
+	margin: 0.5rem 0;
+	padding: 0.6em 1.8em 0.9em;
+	border: none;
+	background-color: #FFBA57;
+	font-family: monospace;
+	font-size: 1.6rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #222;
+	box-shadow:
+			inset 0.1em -0.2em 0 4px #FF5857,
+			inset -0.1em -0.2em 0 4px #FF5857,
+			inset 0.08em -0.18em 0 5px darken(#FF5857, 30%),
+			inset -0.08em -0.18em 0 5px darken(#FF5857, 30%),
+			0 0.25em 0 0.15em rgba(0,0,0,.2);
+	border-radius: 0.8rem;
+	overflow:hidden;
+	transition: all 90ms ease-in-out;
+
+&:active {
+	 padding: 0.7em 1.8em 0.8em;
+	 box-shadow:
+			 inset 0.05em -0.15em 0 4px #FF5857,
+			 inset -0.05em -0.15em 0 4px #FF5857,
+			 inset 0.03em -0.13em 0 5px darken(#FF5857, 30%),
+			 inset -0.03em -0.13em 0 5px darken(#FF5857, 30%),
+			 0 0.25em 0 0.15em rgba(0,0,0,.2);
+	 outline: none;
+ }
+&:focus {
+	 outline: none;
+ }
+}
