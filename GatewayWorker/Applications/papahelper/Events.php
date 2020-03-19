@@ -61,7 +61,6 @@ class Events
      */
     public static function onMessage($client_id, $message)
     {
-
         if($_SERVER['GATEWAY_PORT']==7855){
             if(!isset($_SESSION['run'])){
                 self::bingMobile($client_id, $message);
@@ -74,6 +73,7 @@ class Events
                 $_SESSION['run']=$array_message[0];
                 echo "绑定消息js:".$message."\n";
                 if(isset(self::$dataArray[$_SESSION['run']])){
+
                     $array= Gateway::getClientIdByUid($_SESSION['run']);
                     foreach($array as $item){
                         Gateway::closeClient($item);
@@ -109,13 +109,16 @@ class Events
                 }
             }else{
                 //echo "js消息".$message."\n";
-                $array=explode(";",$message);
-                foreach ($array as $list){
-                    $ls=explode(",",$list);
-                    if (count($ls)>1){
-                        Gateway::sendToClient(self::$dataArray[$_SESSION['run']],self::formatData(9,$list));
+                if(isset(self::$dataArray[$_SESSION['run']])){
+                    $array=explode(";",$message);
+                    foreach ($array as $list){
+                        $ls=explode(",",$list);
+                        if (count($ls)>1){
+                            Gateway::sendToClient(self::$dataArray[$_SESSION['run']],self::formatData(9,$list));
+                        }
                     }
                 }
+
             }
         }
         // 向所有人发送
@@ -295,11 +298,10 @@ class Events
      */
     public static function onClose($client_id)
     {
-        echo "断开:".$client_id."\n";
         $time=time();
-        if(isset($_SESSION['run'])) {
+        echo "断开:".$client_id."\n";
+        if(isset($_SESSION['run'])&&isset($_SESSION['time'])) {
             $timelen=$time-$_SESSION['time'];
-
             $uid=$_SESSION['uid_data'];
             if($_SERVER['GATEWAY_PORT']==7855) {
                 $size=$_SESSION['num'];

@@ -1,6 +1,6 @@
 
 
-var ws=ws || null;
+var ws;
 
 var position;
 var nTime;
@@ -14,13 +14,9 @@ var isConnnct;
 var tel;
 var tim=0;
 var runDsq=0;
-var connSize=0;
-var connSizeNow=0;
-
 function connect_click(){
     tel=document.getElementById("connect_tel").value;
     var num=document.getElementById("connect_num").value;
-    //console.log(1111);
     if(tel=="" && num==""){
         oAlert('连接码有误!');
         //return;
@@ -31,15 +27,11 @@ function connect_click(){
         img_width=img.width;
         img_height=img.height;
         //console.log(img_width+"   rrr  "+img_height);
-
-        var uid =tel+"-"+num;
-        if(tel==""){
-            uid = '13945008550-454e029';
-        }
-
+        //var uid =tel+"-"+num;
+        var uid = '13945008550-60e5d90';
 
         ws.send(uid+"|"+$("#user_tel").text());
-        console.log("接连成功:"+uid+"|"+$("#user_tel").text());
+        //console.log("接连成功:"+img_width+"  "+img_height);
         isConnnct=true;
     };
     ws.onmessage = function(event){
@@ -47,19 +39,17 @@ function connect_click(){
         //console.log(text);
         if(text.size>1024){
             var url1 = URL.createObjectURL(text);
-            connSizeNow+=text.size;
             document.getElementById("d").src=url1;
             //document.getElementById("d").style.backgroundImage="url("+url1+")"
         }else{
             var reader = new FileReader();
             reader.readAsText(text, 'utf-8');
             reader.onload = function (e) {
-                //console.info(reader.result);
+                console.info(reader.result);
                 var ls=reader.result.split(",");
                 if(ls.length>1){
                     switch (ls[0]){
                         case "5":
-                            layer.msg()
                             switch (ls[1]){
                                 case "1":
                                     oAlert1("手机连接已断开!");
@@ -79,7 +69,6 @@ function connect_click(){
                             //console.log("1111  "+ls[1]);
                             //2----3
                             showMobile(true);
-                            connSize=Math.ceil(Number(ts[7])/1024/1024);
                             setShow(ts[4],ts[5],ts[6],ts[2],ts[3]);
                             if(runDsq==0){
                                 setThread();
@@ -93,18 +82,9 @@ function connect_click(){
     };
     ws.onclose = function(event){
         isConnnct=false;
-        showMobile(false);
-        oAlert1("连接已断开!")
-    }
-}
+        $('.phone-btn1').text("重新连接");
+        $('.phone-btn2').css('display','block');
 
-function showMobile(bn) {
-    if(bn){
-        $('#connectbutton').text("断开");
-        $('.pop').show();
-    }else{
-        $('#connectbutton').text("连接");
-        $('.pop').hide();
     }
 }
 
@@ -113,12 +93,8 @@ function setThread(){
         if(isConnnct){
             tim++;
             $('#mb_js').text(tim);
-            var size=Math.ceil(connSizeNow/1024/1024);
-            $('#mb_ll').text(size);
-            $('#mb_lla').text(connSize+size);
         }else{
             tim=0;
-            connSizeNow=0;
         }
     }, 1000);
 }
@@ -165,20 +141,12 @@ function getAndroidVer(num){
 function setShow(pp,xh,bb,isA,isR){
     $('#mb_pp').text(pp);
     $('#mb_xh').text(xh);
-    var size=Math.ceil(connSizeNow/1024/1024);
-    $('#mb_ll').text(size);
-    $('#mb_lla').text(connSize+size);
-
-
+    $("#mb_num").text(tel);
     if(bb<24&&isR=="0")
         $('#mb_xtd').css('display','block');
-    else
-        $('#mb_xtd').css('display','none');
     if(isA=="0")
         $('#mb_now').css('display','block');
-    else
-        $('#mb_now').css('display','none');
-    $('#mb_bb').text(getAndroidVer(bb));
+    $('mb_bb').text(getAndroidVer(bb));
 }
 
 function getMousePos(){
@@ -188,10 +156,9 @@ function getMousePos(){
 
     var mouseX = event.clientX+document.body.scrollLeft;//鼠标x位置
     var mouseY = event.clientY+document.body.scrollTop;//鼠标y位置
-
 //计算点击的相对位置
     var objX = mouseX-objLeft;
-    var objY = mouseY-objTop+getScrollTop();
+    var objY = mouseY-objTop;
 
     clickObjPosition = objX + "," + objY;
 
@@ -199,12 +166,11 @@ function getMousePos(){
     //alert(clickObjPosition);
 }
 
-
 function onMouseMove(){
     if(isNoMove){
         isMove=true;
         var pos=getMousePos();
-        if(Math.abs(pos.x-position.x)>5||Math.abs(pos.y-position.y)>5){
+        if(Math.abs(pos.x-position.x)>5&&Math.abs(pos.y-position.y)>5){
             var timenew=new Date().getTime();
             var t=timenew-nTime;
             nTime=timenew;
@@ -213,22 +179,10 @@ function onMouseMove(){
         }
     }
 }
-function getScrollTop(){
-    var scrollTop=0;
-    if(document.documentElement&&document.documentElement.scrollTop){
-        scrollTop=document.documentElement.scrollTop;
-    }else if(document.body){
-        scrollTop=document.body.scrollTop;
-    }
-    return scrollTop;
-}
 
 function onMouseUpCheck() {
     //console.log("弹起");
-
-
     var pos=getMousePos();
-    //console.log("弹起: "+pos.x+"  "+pos.y+"    "+getScrollTop());
     if(isMove){
         var t=new Date().getTime()-nTime;
         isMove=false;
@@ -272,18 +226,11 @@ function menuCheck() {
 
 function getX(x){
     //console.log(x+"  "+mobile_width+"  "+img_width)
-    var dxd=Math.ceil(x * mobile_width / img_width);
-    if(dxd<0)dxd=0;
-    else if(dxd>mobile_width)dxd=mobile_width;
-    return dxd;
+    return Math.ceil(x * mobile_width / img_width);
 }
 function getY(y){
-    var dxd= Math.ceil(y * mobile_height / img_height);
-    if(dxd<0)dxd=0;
-    else if(dxd>mobile_height)dxd=mobile_height;
-    return dxd;
+    return Math.ceil(y * mobile_height / img_height);
 }
-
 function getOffsetTop(obj){
     var tmp = obj.offsetTop;
     var val = obj.offsetParent;
